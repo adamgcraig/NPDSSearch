@@ -4,20 +4,46 @@
 
 <div id="demo">
 <h2>The XMLHttpRequest Object</h2>
-<button type="button" onclick="loadDoc()">Change Content</button>
+<button type="button" onclick="loadDoc()">Search</button>
+<table id="resultsTable">
+  <tr>
+    <th>Name</th>
+    <th>Principal Tag</th>
+    <th>Canonical Label</th>
+    <th>Created On</th>
+    <th>Updated On</th>
+  </tr>
+  <tr>
+    <td><input id="nameInput" type="text"></td>
+    <td><input id="principalTagInput" type="text"></td>
+    <td><input id="canonicalLabelInput" type="text"></td>
+    <td><input id="createdOnInput" type="text"></td>
+    <td><input id="updatedOnInput" type="text"></td>
+  </tr>
+</table>
 </div>
 
 <script>
 function loadDoc() {
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function() {
-    document.getElementById("demo").innerHTML =
-    this.responseText;
+    const xmlDoc = this.responseXML;
+    const results = xmlDoc.getElementsByTagName("nexusresrep");
+    const resultsTable = document.getElementById("resultsTable");
+    let rows = ""
+    for (let i = 0; i < results.length; i++) {
+      let result = results[i]
+      let name = result.getElementsByTagName("Name");
+      let principalTag = result.getElementsByTagName("PrincipalTag");
+      let canonicalLabel = result.getElementsByTagName("CanonicalLabel");
+      let createdOn = result.getElementsByTagName("CreatedOn");
+      let updatedOn = result.getElementsByTagName("UpdatedOn");
+      rows += "<tr><td>" + name + "<\td><td>" + principalTag + "<\td><td>" + canonicalLabel + "<\td><td>" + createdOn + "<\td><td>" + updatedOn + "<\td><\tr>"
+    }
   }
   xhttp.open("GET", "npds.brainhealthalliance.net.brainias.xml");
   xhttp.send();
 }
 </script>
-
 </body>
 </html>
