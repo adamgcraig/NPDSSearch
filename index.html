@@ -18,8 +18,8 @@
     <td><input id="nameInput" type="text"></td>
     <td><input id="principalTagInput" type="text"></td>
     <td><input id="canonicalLabelInput" type="text"></td>
-    <td><input id="createdOnInput" type="text"></td>
-    <td><input id="updatedOnInput" type="text"></td>
+    <td></td>
+    <td></td>
   </tr>
   </thead>
   <tbody id="resultsRows">
@@ -76,7 +76,17 @@ function loadDoc() {
     console.log(rows)
     document.getElementById("resultsRows").innerHTML= rows
   }
-  xhttp.open("GET", "https://npds.brainhealthalliance.net/nexus/brainiacs/");
+  // Documentation for NPDS REST Web API:
+  // https://npds.portaldoors.net/NPDS/AnonMode/Help
+  targetName = document.getElementById("nameInput").value;
+  targetPrincipalTag = document.getElementById("principalTagInput").value;
+  targetCanonicalLabel = document.getElementById("canonicalLabelInput").value;
+  urlstr = "http://npds.brainhealthalliance.net/nexus/brainiacs/"
+  query = "?enam="+targetName+"&etag="+targetPrincipalTag+"&labcan="+targetCanonicalLabel;
+  requestDestination = urlstr + query;
+  console.log("request destination:")
+  console.log(requestDestination)
+  xhttp.open("GET", requestDestination);
   // Use this flat file for testing if you need a fixed XML response.
   // xhttp.open("GET", "npds.brainhealthalliance.net.brainias.xml");
   xhttp.send();
