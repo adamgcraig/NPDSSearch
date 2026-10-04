@@ -48,19 +48,19 @@ function loadDoc() {
       console.log("result"+i+":")
       console.log(result)
       let name = result.getElementsByTagName("Name");
-      print("name:"+name)
+      console.log("name:"+name)
       let principalTag = result.getElementsByTagName("PrincipalTag");
-      print("principal tag:"+principalTag)
+      console.log("principal tag:"+principalTag)
       let canonicalLabel = result.getElementsByTagName("CanonicalLabel");
-      print("canonical label:"+canonicalLabel)
+      console.log("canonical label:"+canonicalLabel)
       let createdOn = result.getElementsByTagName("CreatedOn");
-      print("created on:"+createdOn)
+      console.log("created on:"+createdOn)
       let updatedOn = result.getElementsByTagName("UpdatedOn");
-      print("updated on:"+updatedOn)
+      console.log("updated on:"+updatedOn)
       rows += "<tr><td>" + name + "<\td><td>" + principalTag + "<\td><td>" + canonicalLabel + "<\td><td>" + createdOn + "<\td><td>" + updatedOn + "<\td><\tr>"
     }
-    print("rows:")
-    print(rows)
+    console.log("rows:")
+    console.log(rows)
     document.getElementById("resultsRows").innerHTML= rows
   }
   xhttp.open("GET", "npds.brainhealthalliance.net.brainias.xml");
