@@ -76,7 +76,9 @@ function loadDoc() {
     console.log(rows)
     document.getElementById("resultsRows").innerHTML= rows
   }
-  xhttp.open("GET", "npds.brainhealthalliance.net.brainias.xml");
+  xhttp.open("GET", "https://npds.brainhealthalliance.net/nexus/brainiacs/");
+  // Use this flat file for testing if you need a fixed XML response.
+  // xhttp.open("GET", "npds.brainhealthalliance.net.brainias.xml");
   xhttp.send();
 }
 </script>
