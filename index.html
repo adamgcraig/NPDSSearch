@@ -47,19 +47,19 @@ function loadDoc() {
       let result = results[i]
       console.log("result"+i+":")
       console.log(result)
-      let name = result.getElementsByTagName("Name");
+      let name = result.getElementsByTagName("Name")[0].innerHTML;
       console.log("name:")
       console.log(name)
-      let principalTag = result.getElementsByTagName("PrincipalTag");
+      let principalTag = result.getElementsByTagName("PrincipalTag")[0].innerHTML;
       console.log("principal tag:")
       console.log(principalTag)
-      let canonicalLabel = result.getElementsByTagName("CanonicalLabel");
+      let canonicalLabel = result.getElementsByTagName("CanonicalLabel")[0].innerHTML;
       console.log("canonical label:")
       console.log(canonicalLabel)
-      let createdOn = result.getElementsByTagName("CreatedOn");
+      let createdOn = result.getElementsByTagName("CreatedOn")[0].innerHTML;
       console.log("created on:")
       console.log(createdOn)
-      let updatedOn = result.getElementsByTagName("UpdatedOn");
+      let updatedOn = result.getElementsByTagName("UpdatedOn")[0].innerHTML;
       console.log("updated on:")
       console.log(updatedOn)
       rows += "<tr><td>" + name + "</td><td>" + principalTag + "</td><td>" + canonicalLabel + "</td><td>" + createdOn + "</td><td>" + updatedOn + "</td></tr>"
