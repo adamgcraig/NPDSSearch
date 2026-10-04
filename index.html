@@ -47,21 +47,21 @@ function loadDoc() {
       let result = results[i]
       console.log("result"+i+":")
       console.log(result)
-      let nameObject = result.getElementsByTagName("Name");
-      console.log("results for Name:")
-      for (const nameObjectElement in nameObject) {
-        console.log(nameObjectElement)
-      }
-      let name = result.getElementsByTagName("Name")[0].nodeValue;
-      console.log("name:"+name)
-      let principalTag = result.getElementsByTagName("PrincipalTag")[0].nodeValue;
-      console.log("principal tag:"+principalTag)
-      let canonicalLabel = result.getElementsByTagName("CanonicalLabel")[0].nodeValue;
-      console.log("canonical label:"+canonicalLabel)
-      let createdOn = result.getElementsByTagName("CreatedOn")[0].nodeValue;
-      console.log("created on:"+createdOn)
-      let updatedOn = result.getElementsByTagName("UpdatedOn")[0].nodeValue;
-      console.log("updated on:"+updatedOn)
+      let name = result.getElementsByTagName("Name");
+      console.log("name:")
+      console.log(name)
+      let principalTag = result.getElementsByTagName("PrincipalTag");
+      console.log("principal tag:")
+      console.log(principalTag)
+      let canonicalLabel = result.getElementsByTagName("CanonicalLabel");
+      console.log("canonical label:")
+      console.log(canonicalLabel)
+      let createdOn = result.getElementsByTagName("CreatedOn");
+      console.log("created on:")
+      console.log(createdOn)
+      let updatedOn = result.getElementsByTagName("UpdatedOn");
+      console.log("updated on:")
+      console.log(updatedOn)
       rows += "<tr><td>" + name + "</td><td>" + principalTag + "</td><td>" + canonicalLabel + "</td><td>" + createdOn + "</td><td>" + updatedOn + "</td></tr>"
     }
     console.log("rows:")
