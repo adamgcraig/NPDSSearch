@@ -6,6 +6,7 @@
 <h2>The XMLHttpRequest Object</h2>
 <button type="button" onclick="loadDoc()">Search</button>
 <table id="resultsTable">
+  <thead>
   <tr>
     <th>Name</th>
     <th>Principal Tag</th>
@@ -20,6 +21,14 @@
     <td><input id="createdOnInput" type="text"></td>
     <td><input id="updatedOnInput" type="text"></td>
   </tr>
+  </thead>
+  <tbody id="resultsRows">
+  <td>none</td>
+  <td>none</td>
+  <td>none</td>
+  <td>none</td>
+  <td>none</td>
+  </tbody>
 </table>
 </div>
 
@@ -29,7 +38,6 @@ function loadDoc() {
   xhttp.onload = function() {
     const xmlDoc = this.responseXML;
     const results = xmlDoc.getElementsByTagName("nexusresrep");
-    const resultsTable = document.getElementById("resultsTable");
     let rows = ""
     for (let i = 0; i < results.length; i++) {
       let result = results[i]
@@ -40,6 +48,7 @@ function loadDoc() {
       let updatedOn = result.getElementsByTagName("UpdatedOn");
       rows += "<tr><td>" + name + "<\td><td>" + principalTag + "<\td><td>" + canonicalLabel + "<\td><td>" + createdOn + "<\td><td>" + updatedOn + "<\td><\tr>"
     }
+    document.getElementById("resultsRows").innerHTML= rows
   }
   xhttp.open("GET", "npds.brainhealthalliance.net.brainias.xml");
   xhttp.send();
