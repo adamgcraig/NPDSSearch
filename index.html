@@ -47,6 +47,11 @@ function loadDoc() {
       let result = results[i]
       console.log("result"+i+":")
       console.log(result)
+      let nameObject = result.getElementsByTagName("Name");
+      print("results for Name:")
+      for (const nameObjectElement in nameObject) {
+        console.log(nameObjectElement)
+      }
       let name = result.getElementsByTagName("Name")[0].nodeValue;
       console.log("name:"+name)
       let principalTag = result.getElementsByTagName("PrincipalTag")[0].nodeValue;
