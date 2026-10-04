@@ -34,7 +34,15 @@
 
 <script>
 function loadDoc() {
-  const xhttp = new XMLHttpRequest();
+  var xhttp = new XMLHttpRequest();
+  if ( !('withCredentials' in xhr) ) {
+    alert("This browser does not support cross-origin resource sharing.");
+    return;
+  }
+  xhttp.onerror = function() {
+    console.log('Error from XML HTTP request:')
+    console.log(this.response)
+  }
   xhttp.onload = function() {
     const xmlDoc = this.responseXML;
     console.log("response:")
