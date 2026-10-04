@@ -4,20 +4,73 @@
 
 <div id="demo">
 <h2>The XMLHttpRequest Object</h2>
-<button type="button" onclick="loadDoc()">Change Content</button>
+<button type="button" onclick="loadDoc()">Search</button>
+<table id="resultsTable">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Principal Tag</th>
+    <th>Canonical Label</th>
+    <th>Created On</th>
+    <th>Updated On</th>
+  </tr>
+  <tr>
+    <td><input id="nameInput" type="text"></td>
+    <td><input id="principalTagInput" type="text"></td>
+    <td><input id="canonicalLabelInput" type="text"></td>
+    <td><input id="createdOnInput" type="text"></td>
+    <td><input id="updatedOnInput" type="text"></td>
+  </tr>
+  </thead>
+  <tbody id="resultsRows">
+  <td>none</td>
+  <td>none</td>
+  <td>none</td>
+  <td>none</td>
+  <td>none</td>
+  </tbody>
+</table>
 </div>
 
 <script>
 function loadDoc() {
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function() {
-    document.getElementById("demo").innerHTML =
-    this.responseText;
+    const xmlDoc = this.responseXML;
+    console.log("response:")
+    console.log(xmlDoc)
+    const results = xmlDoc.getElementsByTagName("NexusResRep");
+    console.log("results:")
+    console.log(results)
+    let rows = ""
+    for (let i = 0; i < results.length; i++) {
+      let result = results[i]
+      console.log("result"+i+":")
+      console.log(result)
+      let name = result.getElementsByTagName("Name")[0].innerHTML;
+      console.log("name:")
+      console.log(name)
+      let principalTag = result.getElementsByTagName("PrincipalTag")[0].innerHTML;
+      console.log("principal tag:")
+      console.log(principalTag)
+      let canonicalLabel = result.getElementsByTagName("CanonicalLabel")[0].innerHTML;
+      console.log("canonical label:")
+      console.log(canonicalLabel)
+      let createdOn = result.getElementsByTagName("CreatedOn")[0].innerHTML;
+      console.log("created on:")
+      console.log(createdOn)
+      let updatedOn = result.getElementsByTagName("UpdatedOn")[0].innerHTML;
+      console.log("updated on:")
+      console.log(updatedOn)
+      rows += "<tr><td>" + name + "</td><td>" + principalTag + "</td><td>" + canonicalLabel + "</td><td>" + createdOn + "</td><td>" + updatedOn + "</td></tr>"
+    }
+    console.log("rows:")
+    console.log(rows)
+    document.getElementById("resultsRows").innerHTML= rows
   }
   xhttp.open("GET", "npds.brainhealthalliance.net.brainias.xml");
   xhttp.send();
 }
 </script>
-
 </body>
 </html>
