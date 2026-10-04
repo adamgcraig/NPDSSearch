@@ -37,17 +37,30 @@ function loadDoc() {
   const xhttp = new XMLHttpRequest();
   xhttp.onload = function() {
     const xmlDoc = this.responseXML;
-    const results = xmlDoc.getElementsByTagName("nexusresrep");
+    console.log("response:")
+    console.log(xmlDoc)
+    const results = xmlDoc.getElementsByTagName("NexusResRep");
+    console.log("results:")
+    console.log(results)
     let rows = ""
     for (let i = 0; i < results.length; i++) {
       let result = results[i]
+      console.log("result"+i+":")
+      console.log(result)
       let name = result.getElementsByTagName("Name");
+      print("name:"+name)
       let principalTag = result.getElementsByTagName("PrincipalTag");
+      print("principal tag:"+principalTag)
       let canonicalLabel = result.getElementsByTagName("CanonicalLabel");
+      print("canonical label:"+canonicalLabel)
       let createdOn = result.getElementsByTagName("CreatedOn");
+      print("created on:"+createdOn)
       let updatedOn = result.getElementsByTagName("UpdatedOn");
+      print("updated on:"+updatedOn)
       rows += "<tr><td>" + name + "<\td><td>" + principalTag + "<\td><td>" + canonicalLabel + "<\td><td>" + createdOn + "<\td><td>" + updatedOn + "<\td><\tr>"
     }
+    print("rows:")
+    print(rows)
     document.getElementById("resultsRows").innerHTML= rows
   }
   xhttp.open("GET", "npds.brainhealthalliance.net.brainias.xml");
