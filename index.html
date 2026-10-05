@@ -81,7 +81,8 @@ function loadDoc() {
   targetName = document.getElementById("nameInput").value;
   targetPrincipalTag = document.getElementById("principalTagInput").value;
   targetCanonicalLabel = document.getElementById("canonicalLabelInput").value;
-  urlstr = "https://npds.brainhealthalliance.net/nexus/brainiacs/"
+  // urlstr = "https://npds.brainhealthalliance.net/nexus/brainiacs/"
+  urlstr = "https://npds.portaldoors.net/nexus/fidentinus/"
   query = "?enam="+targetName+"&etag="+targetPrincipalTag+"&labcan="+targetCanonicalLabel;
   requestDestination = urlstr + query;
   console.log("request destination:")
