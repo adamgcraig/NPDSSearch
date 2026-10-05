@@ -4,7 +4,7 @@
 
 <div id="demo">
 <h2>The XMLHttpRequest Object</h2>
-<button type="button" onclick="loadDoc()">Search</button>
+<button type="button" onclick="loadDoc();">Search</button>
 <table id="resultsTable">
   <thead>
   <tr>
@@ -40,53 +40,53 @@ function loadDoc() {
     return;
   }
   xhttp.onerror = function() {
-    console.log('Error from XML HTTP request:')
-    console.log(this.response)
+    console.log('Error from XML HTTP request:');
+    console.log(this.response);
   }
   xhttp.onload = function() {
     const xmlDoc = this.responseXML;
-    console.log("response:")
-    console.log(xmlDoc)
+    console.log("response:");
+    console.log(xmlDoc);
     const results = xmlDoc.getElementsByTagName("NexusResRep");
-    console.log("results:")
-    console.log(results)
-    let rows = ""
+    console.log("results:");
+    console.log(results);
+    let rows = "";
     for (let i = 0; i < results.length; i++) {
-      let result = results[i]
-      console.log("result"+i+":")
-      console.log(result)
+      let result = results[i];
+      console.log("result"+i+":");
+      console.log(result);
       let name = result.getElementsByTagName("Name")[0].innerHTML;
-      console.log("name:")
-      console.log(name)
+      console.log("name:");
+      console.log(name);
       let principalTag = result.getElementsByTagName("PrincipalTag")[0].innerHTML;
-      console.log("principal tag:")
-      console.log(principalTag)
+      console.log("principal tag:");
+      console.log(principalTag);
       let canonicalLabel = result.getElementsByTagName("CanonicalLabel")[0].innerHTML;
-      console.log("canonical label:")
-      console.log(canonicalLabel)
+      console.log("canonical label:");
+      console.log(canonicalLabel);
       let createdOn = result.getElementsByTagName("CreatedOn")[0].innerHTML;
-      console.log("created on:")
-      console.log(createdOn)
+      console.log("created on:");
+      console.log(createdOn);
       let updatedOn = result.getElementsByTagName("UpdatedOn")[0].innerHTML;
-      console.log("updated on:")
-      console.log(updatedOn)
-      rows += "<tr><td>" + name + "</td><td>" + principalTag + "</td><td>" + canonicalLabel + "</td><td>" + createdOn + "</td><td>" + updatedOn + "</td></tr>"
+      console.log("updated on:");
+      console.log(updatedOn);
+      rows += "<tr><td>" + name + "</td><td>" + principalTag + "</td><td>" + canonicalLabel + "</td><td>" + createdOn + "</td><td>" + updatedOn + "</td></tr>";
     }
-    console.log("rows:")
-    console.log(rows)
-    document.getElementById("resultsRows").innerHTML= rows
-  }
+    console.log("rows:");
+    console.log(rows);
+    document.getElementById("resultsRows").innerHTML= rows;
+  };
   // Documentation for NPDS REST Web API:
   // https://npds.portaldoors.net/NPDS/AnonMode/Help
   targetName = document.getElementById("nameInput").value;
   targetPrincipalTag = document.getElementById("principalTagInput").value;
   targetCanonicalLabel = document.getElementById("canonicalLabelInput").value;
-  // urlstr = "https://npds.brainhealthalliance.net/nexus/brainiacs/"
-  urlstr = "https://npds.portaldoors.net/nexus/fidentinus/"
+  // urlstr = "https://npds.brainhealthalliance.net/nexus/brainiacs/";
+  urlstr = "https://npds.portaldoors.net/nexus/fidentinus/";
   query = "?enam="+targetName+"&etag="+targetPrincipalTag+"&labcan="+targetCanonicalLabel;
   requestDestination = urlstr + query;
-  console.log("request destination:")
-  console.log(requestDestination)
+  console.log("request destination:");
+  console.log(requestDestination);
   xhttp.open("GET", requestDestination);
   // Use this flat file for testing if you need a fixed XML response.
   // xhttp.open("GET", "npds.brainhealthalliance.net.brainias.xml");
